@@ -7,6 +7,8 @@ const todo = require('./routes/todo_router')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
+var port = process.env.PORT || 3000
+
 mongoose.connect('mongodb://localhost/myapp')
 
 mongoose.Promise = global.Promise
@@ -27,4 +29,6 @@ app.get('/', (req, res) => {
   res.send('Vell, vell, vell. Vellcome to my app.')
 })
 
-app.listen(3000)
+app.listen(port, function () {
+  console.log('express server running at ' + port)
+})
