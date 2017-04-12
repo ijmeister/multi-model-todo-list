@@ -9,7 +9,7 @@ const methodOverride = require('method-override')
 
 var port = process.env.PORT || 3000
 
-mongoose.connect('mongodb://localhost/myapp')
+mongoose.connect(process.env.PROD_MONGODB || 'mongodb://localhost/myapp')
 
 mongoose.Promise = global.Promise
 
@@ -23,7 +23,7 @@ app.use(ejsLayouts)
 
 app.set('view engine', 'ejs')
 
-app.use('/todo', todo)
+app.use('/todos', todo)
 
 app.get('/', (req, res) => {
   res.send('Vell, vell, vell. Vellcome to my app.')
