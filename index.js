@@ -3,7 +3,8 @@ const app = express()
 const path = require('path')
 const ejsLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
-const todo = require('./routes/todo_router')
+const todoRouter = require('./routes/todo_router')
+const pageRouter = require('./routes/pages_router')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
@@ -23,7 +24,10 @@ app.use(ejsLayouts)
 
 app.set('view engine', 'ejs')
 
-app.use('/todos', todo)
+// Routers
+//
+app.use('/', pageRouter)
+app.use('/todos', todoRouter)
 
 app.get('/', (req, res) => {
   res.send('Vell, vell, vell. Vellcome to my app.')
