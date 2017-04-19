@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="page-header">All Todo Groups</h1>
+
+<ul class="list-group">
+  <% todos.forEach(function (todoGroupItem) { %>
+    <li class="list-group-item" style="background-color: <%= todoGroupItem.color %>">
+      <strong><%= todoGroupItem.name %>: </strong>
+      <%= todoGroupItem.color %>
+      || Completed:
+      <a class="pull-right" href=<%= "/todogroups/" + todoGroupItem._id %>>View</a>
+    </li>
+  <% }) %>
+</ul>
+
+</div>
